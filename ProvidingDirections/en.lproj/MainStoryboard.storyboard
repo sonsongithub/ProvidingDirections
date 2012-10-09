@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="FMG-Pb-ZFS">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller - Directions-->
+        <scene sceneID="thV-ei-J4a">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="BuX-Lv-O3U" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Directions" id="N0E-hj-xFS"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5uZ-yx-GQF">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="SRN-g2-cyF" kind="relationship" relationship="rootViewController" id="EwF-OB-KmA"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4gC-Zr-Eql" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2146" y="-242"/>
+        </scene>
+        <!--View Controller - Directions-->
+        <scene sceneID="WjL-Z8-lKc">
+            <objects>
+                <viewController id="SRN-g2-cyF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dMj-v4-DdE">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Sp-vp-9Zg"/>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Sp-vp-9Zg" firstAttribute="top" secondItem="dMj-v4-DdE" secondAttribute="top" type="default" id="3P4-n7-lQP"/>
+                            <constraint firstItem="7Sp-vp-9Zg" firstAttribute="trailing" secondItem="dMj-v4-DdE" secondAttribute="trailing" type="default" id="fM6-D2-dL2"/>
+                            <constraint firstItem="7Sp-vp-9Zg" firstAttribute="bottom" secondItem="dMj-v4-DdE" secondAttribute="bottom" type="default" id="sEM-qV-TXe"/>
+                            <constraint firstItem="7Sp-vp-9Zg" firstAttribute="leading" secondItem="dMj-v4-DdE" secondAttribute="leading" type="default" id="vpu-ob-muA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Directions" id="3pb-HQ-gMq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DkS-ua-8Xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2565" y="-242"/>
+        </scene>
+        <!--Navigation Controller - Coverage-->
+        <scene sceneID="3te-lh-0fr">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="FMG-Pb-ZFS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Coverage" id="LC6-ti-Grk"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="k30-24-jJN">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gOh-e2-WQb" kind="relationship" relationship="rootViewController" id="yIT-Jk-oco"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MRL-KZ-mDo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1242" y="-242"/>
+        </scene>
+        <!--Make Coverage View Controller - Make coverage-->
+        <scene sceneID="mPM-Gy-Edu">
+            <objects>
+                <viewController id="gOh-e2-WQb" customClass="MakeCoverageViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EdJ-xw-soL">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jgE-6U-UnP">
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="gOh-e2-WQb" id="55W-hn-jnr"/>
+                                    <outletCollection property="gestureRecognizers" destination="9Nt-8T-NH3" appends="YES" id="KeI-Ci-CcQ"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jgE-6U-UnP" firstAttribute="leading" secondItem="EdJ-xw-soL" secondAttribute="leading" type="default" id="Hek-e2-unq"/>
+                            <constraint firstItem="jgE-6U-UnP" firstAttribute="trailing" secondItem="EdJ-xw-soL" secondAttribute="trailing" type="default" id="TId-45-HWt"/>
+                            <constraint firstItem="jgE-6U-UnP" firstAttribute="bottom" secondItem="EdJ-xw-soL" secondAttribute="bottom" type="default" id="kMl-dQ-gBg"/>
+                            <constraint firstItem="jgE-6U-UnP" firstAttribute="top" secondItem="EdJ-xw-soL" secondAttribute="top" type="default" id="oXB-CO-lAD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Make coverage" id="BT7-EA-LiF">
+                        <barButtonItem key="leftBarButtonItem" title="Reset" style="done" id="14s-h8-Y0Q"/>
+                        <barButtonItem key="rightBarButtonItem" title="Output" id="Vn5-qD-W5l"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="longPressGestureRecognizer" destination="9Nt-8T-NH3" id="UEZ-sm-6M2"/>
+                        <outlet property="mapView" destination="jgE-6U-UnP" id="ari-Py-t9B"/>
+                        <segue destination="BuX-Lv-O3U" kind="modal" id="yfd-WC-F1l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i0b-De-fJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9Nt-8T-NH3">
+                    <connections>
+                        <action selector="pushLong:" destination="gOh-e2-WQb" id="BRo-kS-EQt"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1661" y="-242"/>
+        </scene>
+    </scenes>
+    <classes>
+        <class className="MakeCoverageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeCoverageViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="pushLong:"/>
+                <relationship kind="outlet" name="longPressGestureRecognizer" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+    </classes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
