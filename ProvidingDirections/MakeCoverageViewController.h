@@ -12,8 +12,11 @@
 @interface MakeCoverageViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-@property (strong, nonatomic) IBOutlet UILongPressGestureRecognizer *longPressGestureRecognizer;
+@property (strong, nonatomic) NSMutableArray *pins;
+@property (strong, nonatomic) MKPolygon *polygon;
+@property (strong, nonatomic) MKPolygonView *polygonView;
 
-- (IBAction)pushLong:(id)sender;
+- (IBAction)handleLongPress:(UILongPressGestureRecognizer *)recognizer;
+- (IBAction)output:(id)sender;
 
 @end

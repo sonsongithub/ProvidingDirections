@@ -72,7 +72,7 @@
                                 <gestureRecognizers/>
                                 <connections>
                                     <outlet property="delegate" destination="gOh-e2-WQb" id="55W-hn-jnr"/>
-                                    <outletCollection property="gestureRecognizers" destination="9Nt-8T-NH3" appends="YES" id="KeI-Ci-CcQ"/>
+                                    <outletCollection property="gestureRecognizers" destination="RDG-S8-jva" appends="YES" id="gvi-bB-7cs"/>
                                 </connections>
                             </mapView>
                         </subviews>
@@ -86,18 +86,22 @@
                     </view>
                     <navigationItem key="navigationItem" title="Make coverage" id="BT7-EA-LiF">
                         <barButtonItem key="leftBarButtonItem" title="Reset" style="done" id="14s-h8-Y0Q"/>
-                        <barButtonItem key="rightBarButtonItem" title="Output" id="Vn5-qD-W5l"/>
+                        <barButtonItem key="rightBarButtonItem" title="Output" id="Vn5-qD-W5l">
+                            <connections>
+                                <action selector="output:" destination="gOh-e2-WQb" id="cPl-6t-7P4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="longPressGestureRecognizer" destination="9Nt-8T-NH3" id="UEZ-sm-6M2"/>
                         <outlet property="mapView" destination="jgE-6U-UnP" id="ari-Py-t9B"/>
                         <segue destination="BuX-Lv-O3U" kind="modal" id="yfd-WC-F1l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0b-De-fJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="9Nt-8T-NH3">
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="RDG-S8-jva">
                     <connections>
-                        <action selector="pushLong:" destination="gOh-e2-WQb" id="BRo-kS-EQt"/>
+                        <action selector="handleLongPress:" destination="gOh-e2-WQb" id="dfC-dy-6up"/>
+                        <outlet property="delegate" destination="gOh-e2-WQb" id="j97-sd-kE4"/>
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
@@ -108,8 +112,8 @@
         <class className="MakeCoverageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MakeCoverageViewController.h"/>
             <relationships>
-                <relationship kind="action" name="pushLong:"/>
-                <relationship kind="outlet" name="longPressGestureRecognizer" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="action" name="handleLongPress:" candidateClass="UILongPressGestureRecognizer"/>
+                <relationship kind="action" name="output:"/>
                 <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
             </relationships>
         </class>
