@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		140F15401638FA7F00ED1C71 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 140F153F1638FA7F00ED1C71 /* CoreLocation.framework */; };
 		1465765C1624083000A84ECF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1465765B1624083000A84ECF /* UIKit.framework */; };
 		1465765E1624083000A84ECF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1465765D1624083000A84ECF /* Foundation.framework */; };
 		146576601624083000A84ECF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1465765F1624083000A84ECF /* CoreGraphics.framework */; };
@@ -21,9 +22,11 @@
 		14657687162408BA00A84ECF /* MakeCoverageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 14657686162408BA00A84ECF /* MakeCoverageViewController.m */; };
 		14657689162408C000A84ECF /* region.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 14657688162408C000A84ECF /* region.geojson */; };
 		1487031E16388E7200521A7A /* PinAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1487031D16388E7200521A7A /* PinAnnotation.m */; };
+		149BE0381638F406002D60D0 /* RouteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 149BE0371638F406002D60D0 /* RouteViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		140F153F1638FA7F00ED1C71 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		146576571624083000A84ECF /* ProvidingDirections.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProvidingDirections.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1465765B1624083000A84ECF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		1465765D1624083000A84ECF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -44,6 +47,8 @@
 		14657688162408C000A84ECF /* region.geojson */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = region.geojson; sourceTree = "<group>"; };
 		1487031C16388E7200521A7A /* PinAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinAnnotation.h; sourceTree = "<group>"; };
 		1487031D16388E7200521A7A /* PinAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinAnnotation.m; sourceTree = "<group>"; };
+		149BE0361638F406002D60D0 /* RouteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteViewController.h; sourceTree = "<group>"; };
+		149BE0371638F406002D60D0 /* RouteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				140F15401638FA7F00ED1C71 /* CoreLocation.framework in Frameworks */,
 				146576831624088600A84ECF /* MapKit.framework in Frameworks */,
 				1465765C1624083000A84ECF /* UIKit.framework in Frameworks */,
 				1465765E1624083000A84ECF /* Foundation.framework in Frameworks */,
@@ -64,6 +70,7 @@
 		1465764C1624083000A84ECF = {
 			isa = PBXGroup;
 			children = (
+				140F153F1638FA7F00ED1C71 /* CoreLocation.framework */,
 				146576611624083000A84ECF /* ProvidingDirections */,
 				1465765A1624083000A84ECF /* Frameworks */,
 				146576581624083000A84ECF /* Products */,
@@ -99,6 +106,8 @@
 				1487031D16388E7200521A7A /* PinAnnotation.m */,
 				14657685162408BA00A84ECF /* MakeCoverageViewController.h */,
 				14657686162408BA00A84ECF /* MakeCoverageViewController.m */,
+				149BE0361638F406002D60D0 /* RouteViewController.h */,
+				149BE0371638F406002D60D0 /* RouteViewController.m */,
 				146576621624083000A84ECF /* Supporting Files */,
 			);
 			path = ProvidingDirections;
@@ -190,6 +199,7 @@
 				1465766C1624083000A84ECF /* AppDelegate.m in Sources */,
 				14657687162408BA00A84ECF /* MakeCoverageViewController.m in Sources */,
 				1487031E16388E7200521A7A /* PinAnnotation.m in Sources */,
+				149BE0381638F406002D60D0 /* RouteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

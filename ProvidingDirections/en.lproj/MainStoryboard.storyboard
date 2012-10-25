@@ -4,31 +4,19 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller - Directions-->
-        <scene sceneID="thV-ei-J4a">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="BuX-Lv-O3U" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Directions" id="N0E-hj-xFS"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5uZ-yx-GQF">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="SRN-g2-cyF" kind="relationship" relationship="rootViewController" id="EwF-OB-KmA"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4gC-Zr-Eql" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2146" y="-242"/>
-        </scene>
-        <!--View Controller - Directions-->
+        <!--Route View Controller - Directions-->
         <scene sceneID="WjL-Z8-lKc">
             <objects>
-                <viewController id="SRN-g2-cyF" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RouteViewController" id="SRN-g2-cyF" customClass="RouteViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dMj-v4-DdE">
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Sp-vp-9Zg"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7Sp-vp-9Zg">
+                                <connections>
+                                    <outlet property="delegate" destination="SRN-g2-cyF" id="Y8d-TY-lt6"/>
+                                </connections>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -39,10 +27,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Directions" id="3pb-HQ-gMq"/>
+                    <connections>
+                        <outlet property="mapView" destination="7Sp-vp-9Zg" id="0Gz-nn-fva"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DkS-ua-8Xf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2565" y="-242"/>
+            <point key="canvasLocation" x="2171" y="-242"/>
         </scene>
         <!--Navigation Controller - Coverage-->
         <scene sceneID="3te-lh-0fr">
@@ -94,7 +85,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="jgE-6U-UnP" id="ari-Py-t9B"/>
-                        <segue destination="BuX-Lv-O3U" kind="modal" id="yfd-WC-F1l"/>
+                        <segue destination="SRN-g2-cyF" kind="push" id="Fuw-hD-ggu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i0b-De-fJH" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -119,6 +110,12 @@
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RouteViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RouteViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
+            </relationships>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
