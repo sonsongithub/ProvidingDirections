@@ -10,6 +10,8 @@
 
 #import "PinAnnotation.h"
 
+#import <pwd.h>
+
 @interface MakeCoverageViewController ()
 
 @end
@@ -17,6 +19,38 @@
 @implementation MakeCoverageViewController
 
 #pragma mark - Instance method
+
+- (void)writeGeoJSONToUserDesktop {
+	NSString *path = [[self homeDirectory] stringByAppendingPathComponent:@"Desktop/region.geojson"];
+	NSData *data = [self geoJSONData];
+	[data writeToFile:path atomically:YES];
+}
+
+- (NSString *) homeDirectory {
+	NSString *logname = [NSString stringWithCString:getenv("LOGNAME") encoding:NSUTF8StringEncoding];
+	struct passwd *pw = getpwnam([logname UTF8String]);
+	return pw ? [NSString stringWithCString:pw->pw_dir encoding:NSUTF8StringEncoding] : [@"/Users" stringByAppendingPathComponent:logname];
+}
+
+- (NSData*)geoJSONData {
+	NSError *error = nil;
+	NSMutableArray *coordinates = [NSMutableArray array];
+	for (PinAnnotation *annotation in self.pins)
+		[coordinates addObject:@[@(annotation.coordinate.longitude), @(annotation.coordinate.latitude)]];
+	
+	NSDictionary *json = @{@"type":@"MultiPolygon", @"coordinates":@[@[coordinates]]};
+	NSData *data = [NSJSONSerialization dataWithJSONObject:json options:0 error:&error];
+	if (error) {
+		NSLog(@"%@", [error localizedDescription]);
+		return nil;
+	}
+	return data;
+}
+
+- (NSString*)geoJSONString {
+	NSData *data = [self geoJSONData];
+	return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+}
 
 - (void)removePins {
     [self.mapView removeAnnotations:self.mapView.annotations];
@@ -29,9 +63,8 @@
 	CLLocationCoordinate2D *points = malloc(sizeof(CLLocationCoordinate2D) * self.pins.count);
 	CLLocationCoordinate2D *p = points;
 	
-	for (PinAnnotation *pin in self.pins) {
+	for (PinAnnotation *pin in self.pins)
 		*(p++) = pin.coordinate;
-	}
 	
 	[self.mapView removeOverlay:self.polygon];
 	self.polygon = [MKPolygon polygonWithCoordinates:points count:self.pins.count];
@@ -43,13 +76,15 @@
                                                       toCoordinateFromView: self.mapView];
     PinAnnotation *pin = [[PinAnnotation alloc] init];
 	pin.coordinate = convertedPoint;
-	pin.title = [NSString stringWithFormat: @"Pin number %i", self.pins.count];
-	pin.subtitle = [NSString stringWithFormat: @"%f, %f", convertedPoint.latitude, convertedPoint.longitude];
+	pin.title = [NSString stringWithFormat: @"Pin %i", self.pins.count + 1];
+	pin.subtitle = [NSString stringWithFormat: @"(%f, %f)", convertedPoint.latitude, convertedPoint.longitude];
 	
     [self.mapView addAnnotation:pin];
     [self.pins addObject:pin];
 	[self updatePinsPolygon];
 }
+
+#pragma mark - ViewController
 
 - (void)viewDidLoad {
 	self.pins = [NSMutableArray array];
@@ -59,7 +94,28 @@
 #pragma mark - IBAction
 
 - (IBAction)output:(id)sender {
-	NSLog(@"Output");
+	[self geoJSONString];
+#if TARGET_IPHONE_SIMULATOR
+	UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Confirmation", nil)
+														message:NSLocalizedString(@"Output GeoJSON to your Desktop?", nil)
+													   delegate:self
+											  cancelButtonTitle:NSLocalizedString(@"No", nil)
+											  otherButtonTitles:NSLocalizedString(@"YES", nil), nil];
+	[alertView show];
+#else
+	[self removePins];
+#endif
+}
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+	if (buttonIndex == 0) {
+	}
+	else if (buttonIndex == 1) {
+		[self writeGeoJSONToUserDesktop];
+	}
+	[self removePins];
 }
 
 #pragma mark - Gesture handler
